@@ -1,0 +1,4 @@
+/.idea/*.xml
+/target/surefire-reports/*
+/target/maven-status/*
+/target/classes/com/springernature/fluffy/pages/*.class

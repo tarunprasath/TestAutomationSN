@@ -4,6 +4,10 @@ package com.springernature.fluffy.testpages;
 import com.springernature.fluffy.basetest.BaseTest;
 import org.junit.*;
 import com.springernature.fluffy.pages.HomePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class HomePagePageTest extends BaseTest
 {
@@ -37,11 +41,12 @@ public class HomePagePageTest extends BaseTest
     }
 
     @Test
-    public void checkChangeLanguageToDeutsch()
-    {
-        homePage.changeLanguageDeutsch()
-                .checkLanguage("Deutsch");
-
+    public void checkChangeLanguageToDeutsch() throws InterruptedException {
+        homePage.clickLanguageButton();
+        WebDriverWait wait = new WebDriverWait(getDriver(),30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='cross-nav cross-nav--wide']//button[@class='flyout-caption cur']/span")));
+        //Thread.sleep(2000);
+        homePage.changeLanguageDeutsch().checkLanguage("Deutsch");
     }
 
 }

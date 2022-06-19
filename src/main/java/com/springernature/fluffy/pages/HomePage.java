@@ -28,7 +28,8 @@ public class HomePage extends AbstractBasePage
     @FindBy(how = How.CSS, using = "#advanced-search-link")
     private WebElement advancedSearchLink;
 
-    @FindBy(how = How.CSS, using = ".lang > button > div")
+    //@FindBy(how = How.CSS, using = ".lang > button > div")
+    @FindBy(how = How.XPATH, using = "//div[@class='cross-nav cross-nav--wide']//button[@class='flyout-caption cur']/span")
     private WebElement currentLanguage;
 
     @FindBy(how = How.CSS, using = ".change-language-Deutsch")
@@ -99,6 +100,12 @@ public class HomePage extends AbstractBasePage
     {
         String current = currentLanguage.getText();
         assertEquals(current, expected);
+        return this;
+    }
+
+    public HomePage clickLanguageButton()
+    {
+        currentLanguage.click();
         return this;
     }
 }
