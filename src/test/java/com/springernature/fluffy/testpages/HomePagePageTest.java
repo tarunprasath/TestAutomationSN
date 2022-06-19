@@ -41,11 +41,10 @@ public class HomePagePageTest extends BaseTest
     }
 
     @Test
-    public void checkChangeLanguageToDeutsch() throws InterruptedException {
+    public void checkChangeLanguageToDeutsch() {
         homePage.clickLanguageButton();
         WebDriverWait wait = new WebDriverWait(getDriver(),30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='cross-nav cross-nav--wide']//button[@class='flyout-caption cur']/span")));
-        //Thread.sleep(2000);
         homePage.changeLanguageDeutsch().checkLanguage("Deutsch");
     }
 
